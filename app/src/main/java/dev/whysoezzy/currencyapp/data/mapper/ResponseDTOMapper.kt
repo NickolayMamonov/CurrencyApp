@@ -2,19 +2,16 @@ package dev.whysoezzy.currencyapp.data.mapper
 
 import dev.whysoezzy.currencyapp.data.common.EntityMapper
 import dev.whysoezzy.currencyapp.data.entity.ResponseDTO
-import dev.whysoezzy.currencyapp.data.entity.ValutesDTO
+import dev.whysoezzy.currencyapp.domain.model.CurrencyData
 
-object ResponseDTOMapper : EntityMapper<ResponseDTO, List<ValutesDTO>> {
-    override fun fromTo(entity: ResponseDTO): List<ValutesDTO> {
+object ResponseDTOMapper : EntityMapper<ResponseDTO, List<CurrencyData>> {
+    override fun fromTo(entity: ResponseDTO): List<CurrencyData> {
         return entity.Valute.entries.map { entry ->
-            ValutesDTO(
-                ID = entry.value.ID,
-                CharCode = entry.value.CharCode,
-                NumCode = entry.value.NumCode,
-                Nominal = entry.value.Nominal,
-                Name = entry.value.Name,
-                Value = entry.value.Value,
-                Previous = entry.value.Previous
+            CurrencyData(
+                name = entry.value.Name,
+                charCode = entry.value.CharCode,
+                nominal = entry.value.Nominal,
+                value = entry.value.Value
             )
         }
     }

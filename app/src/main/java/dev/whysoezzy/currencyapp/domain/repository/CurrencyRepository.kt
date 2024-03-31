@@ -1,8 +1,8 @@
 package dev.whysoezzy.currencyapp.domain.repository
 
-import dev.whysoezzy.currencyapp.data.entity.ValutesDTO
+import dev.whysoezzy.currencyapp.domain.model.CurrencyData
 
-interface CurrencyRepository  {
+interface CurrencyRepository {
 
-    suspend fun getData() : List<ValutesDTO>
+    suspend fun getData(): List<CurrencyData>
 }

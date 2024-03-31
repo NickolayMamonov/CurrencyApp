@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import dev.whysoezzy.currencyapp.R
-import dev.whysoezzy.currencyapp.data.entity.ValutesDTO
+import dev.whysoezzy.currencyapp.domain.model.CurrencyData
 
 class MainAdapter(
-    private var mList: List<ValutesDTO>
+    private var mList: List<CurrencyData>
 ) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,8 +24,8 @@ class MainAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.setIsRecyclable(false)
         val currency = mList[position]
-        holder.name.text = currency.Name
-        holder.currency.text = "${currency.Nominal} ${currency.CharCode} = ${currency.Value} RUB"
+        holder.name.text = currency.name
+        holder.currency.text = "${currency.nominal} ${currency.charCode} = ${currency.value} RUB"
     }
 
     override fun getItemCount(): Int = mList.size
