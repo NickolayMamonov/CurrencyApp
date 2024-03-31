@@ -1,5 +1,6 @@
 package dev.whysoezzy.currencyapp.presentation.main
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,18 +20,19 @@ class MainAdapter(
         return ViewHolder(view)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.setIsRecyclable(false)
         val currency = mList[position]
-        holder.currency.text = "${currency.Nominal} ${currency.CharCode}"
-        holder.value.text = "${currency.Value} RUB"
+        holder.name.text = currency.Name
+        holder.currency.text = "${currency.Nominal} ${currency.CharCode} = ${currency.Value} RUB"
     }
 
     override fun getItemCount(): Int = mList.size
 
-    inner class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val value: TextView = itemView.findViewById(R.id.value)
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val currency: TextView = itemView.findViewById(R.id.currency)
+        val name: TextView = itemView.findViewById(R.id.name)
 
     }
 }
